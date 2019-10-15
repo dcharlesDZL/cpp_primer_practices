@@ -16,9 +16,9 @@ void try_throw_catch_test()
 			try
 			{
 				double num, den;
-				cout << "被除数为：";
-				cin >> num;
-				cout << "除数为：";
+				cout<<"被除数为：";
+				cin>>num;
+				cout<<"除数为：";
 				cin >> den;
 				if (den == 0)
 					throw exception("警告：被除数不能为0,请重新输入");
@@ -40,18 +40,22 @@ size_t call_count()
 	return ++var2;
 }
 //6.2.1练习
-void swapp(int a, int b)
+void swap(int *a, int *b)
 {
-	int* p, * q;
-	p = &a;
-	q = &b;
-	*p = b;
-	*q = a;
+	int i;
+	i = *a;
+	*a = *b;
+	*b = i;
+}
+//
+void reset(int i)
+{
+	i = 0;
 }
 int main()
 {
 	//5.6.3
-	//try_throw_catch_test();
+	try_throw_catch_test();
 	//6.1.1
 	for(int i = 0;i<100;i++)
 	call_count();
@@ -59,7 +63,14 @@ int main()
 	//6.2.1
 	int a = 2;
 	int b = 3;
-	swapp(a, b);
-	cout << a << "   " << b;
+	int* p, * q;
+	p = &a;
+	q = &b;
+	swap(p, q);
+	cout << a << "   " << b<<endl;
+	//
+	int int1 = 10;
+	reset(int1);
+	cout<<int1<<endl;
 	return 0;
 }
